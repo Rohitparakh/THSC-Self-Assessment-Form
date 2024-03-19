@@ -1,0 +1,240 @@
+body {
+    /* font-family: Arial, sans-serif; */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.quiz .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.option {
+    margin: 5px;
+}
+
+.option button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #fff; 
+    color: #2d3d23;
+    border: 1px solid #2d3d23;
+    transition: background-color 0.3s;
+}
+
+.option button:hover {
+    background-color: #2d3d23; 
+    color: #fff; 
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #2d3d23; 
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #172214; 
+}
+
+/* Style for the product grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Style for each product card */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Style for product image */
+.product-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Style for product title */
+.product-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style for product price */
+.product-price {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Style for product review */
+.product-review {
+    margin-bottom: 10px;
+}
+
+/* Style for add to cart button */
+.add-to-cart {
+    background-color: #2d3d23; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #172214; 
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-button.selected {
+    background-color: #2d3d23;
+    color: #fff;
+}
+
+.cta-button {
+    background-color: #2d3d23; 
+    color: #fff; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+}
+
+.secondary-button {
+    background-color: #fff; /* White background */
+    color: #2d3d23; /* Blue text */
+    border: 1px solid #2d3d23; /* Blue border */
+    padding: 10px 20px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+}
+
+/* Hover styles */
+.cta-button:hover {
+    background-color: #172214; /* Darker blue background */
+}
+
+.secondary-button:hover {
+    background-color: #f0f0f0; /* Light gray background */
+}
+
+/* Style for the "Show Recommendations" button */
+#showRecommendationsButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2d3d23; /* Blue background */
+    color: #fff; /* White text */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#showRecommendationsButton:hover {
+    background-color: #172214; /* Darker blue background on hover */
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #2d3d23; /* Green */
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.alert-success {
+    background-color: #2d3d23; /* Green */
+}
+
+/* Animation */
+@keyframes slideIn {
+    0% { top: -100px; }
+    100% { top: 20px; }
+}
+
+@keyframes slideOut {
+    0% { top: 20px; }
+    100% { top: -100px; }
+}
+
+.alert {
+    animation: slideIn 0.5s forwards, slideOut 0.5s forwards 2.5s;
+}
