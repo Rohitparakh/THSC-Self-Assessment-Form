@@ -1,13 +1,65 @@
 let currentQuestion = 1;
-let age, gender, fitnessGoals = [], height, weight, bmi, goals = [], exercise, activityFrequency, activityDuration, activityIntensity, medicalCondition, waistFat, diagnosedConditions = [], medication, menopause, eatingHabits, foodAllergies = [], waterIntake, caffeineIntake, wholeGrainServings, fruitServings, vegetableServings, proteinServings, eatingOutFrequency, sugarIntake, packedFoodsFrequency, alcoholFrequency, sleepDuration, email;
+let name, phone, age, gender, fitnessGoals = [], height, weight, bmi, goals = [], exercise, activityFrequency, activityDuration, activityIntensity, medicalCondition, waistFat, diagnosedConditions = [], medication, menopause, eatingHabits, foodAllergies = [], waterIntake, caffeineIntake, wholeGrainServings, fruitServings, vegetableServings, proteinServings, eatingOutFrequency, sugarIntake, packedFoodsFrequency, alcoholFrequency, sleepDuration, email;
 
-// Hide the intro screen and show the first question when the start button is clicked
-document.getElementById("startButton").addEventListener("click", function() {
-    document.getElementById("introScreen").style.display = "none";
+document.addEventListener("DOMContentLoaded", function() {
+  // Hide other questions section initially
+  var otherQuestionsSection = document.getElementById('otherQuestionsSection');
+  otherQuestionsSection.style.display = 'none';
+
+  // Handle submission of user info
+  var userInfoSubmitBtn = document.getElementById('userInfoSubmit');
+  userInfoSubmitBtn.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get user info
+    var nameInput = document.getElementById('name');
+    var phoneInput = document.getElementById('phone');
+    var emailInput = document.getElementById('email');
+
+    name = nameInput.value.trim();
+    phone = phoneInput.value.trim();
+    email = emailInput.value.trim();
+
+    // Validate user info
+    if (name === '' || phone === '' || email === '') {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    // Validate email format
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    // Assuming validation passes, hide user info section
+    var userInfoSection = document.getElementById('userInfoSection');
+    userInfoSection.style.display = 'none';
+    // Show other questions section
+    otherQuestionsSection.style.display = 'block';
     document.querySelector(".btn-group").style.display = "flex";
     document.querySelector(".questionDiv").style.display = "block";
     document.querySelector(".question").style.display = "block";
+    if(currentQuestion===1){
+    document.querySelector('.btn-group').style.justifyContent = 'right';
+    }
+
+    // You can now proceed with displaying the rest of the quiz questions
+    // and handling user responses accordingly
+  });
+
+  // Add event listeners for other quiz interactions as needed
 });
+
+
+// Hide the intro screen and show the first question when the start button is clicked
+// document.getElementById("startButton").addEventListener("click", function() {
+//     document.getElementById("introScreen").style.display = "none";
+    // document.querySelector(".btn-group").style.display = "flex";
+    // document.querySelector(".questionDiv").style.display = "block";
+    // document.querySelector(".question").style.display = "block";
+// });
 
 function setAge(selectedAge) {
   age = selectedAge;
@@ -273,7 +325,7 @@ function prevQuestion() {
   document.getElementById(`question${currentQuestion}`).style.display = 'block';
   if (currentQuestion === 1) {
     document.getElementById('prevBtn').style.display = 'none';
-  }
+  } 
   document.getElementById('nextBtn').innerText = 'Next';
 }
 
@@ -282,6 +334,9 @@ function showThankYouScreen() {
   document.getElementById('prevBtn').style.display = 'none';
   document.getElementById('nextBtn').style.display = 'none';
   document.getElementById("thankYouScreen").style.display = "block";
+  // Display BMI
+  var bmiText = document.getElementById("bmiText");
+  bmiText.textContent = "Your BMI is: " + bmi;
 }
 
 // Function to show the recommendations screen and hide the thank-you screen
@@ -301,10 +356,12 @@ function nextQuestion(step = 1) {
 
   transitioning = true;
 
+  document.querySelector('.btn-group').style.justifyContent = 'space-between';
+
   // Hide the current question
   document.getElementById(`question${currentQuestion}`).style.display = 'none';
   currentQuestion += step;
-  if (currentQuestion <= 34) {
+  if (currentQuestion <= 33) {
     // Show the next question after a delay
     setTimeout(() => {
       document.getElementById(`question${currentQuestion}`).style.display = 'block';
@@ -323,7 +380,7 @@ function nextQuestion(step = 1) {
   }
 
    // Change next button text if on the last question
-   if (currentQuestion === 34) {
+   if (currentQuestion === 33) {
     document.getElementById('nextBtn').innerText = 'Finish';
   } else {
     document.getElementById('nextBtn').innerText = 'Next';
@@ -764,3 +821,4 @@ fetch('https://script.google.com/macros/s/AKfycbxswizVrOYShTWocw76dFXW3pnnlzmSG0
 });
 
 }
+

@@ -8,8 +8,20 @@
 </head>
 <body>
 <div class="quiz">
-  
-  <div class="container questionDiv" style="display: none;">
+   <!-- Name, Phone Number, and Email Section -->
+   <div id="userInfoSection" class="container">
+    <h1>Welcome to Our Product Recommendation Platform</h1>
+    <p>We're here to help you find the best products tailored to your needs!</p>
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter your name"><br><br>
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" placeholder="Enter your phone number"><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter your email address"><br><br>
+    <button id="userInfoSubmit" class="btn">Submit</button>
+  </div>
+
+  <div id="otherQuestionsSection" class="container questionDiv" style="display: none;">
   <div id="questionContainer">
     <div class="question" id="question1" style="display: none;">
       <p> Your Age</p>
@@ -573,16 +585,17 @@
           </div>
         </div>
     </div>
-    <div class="question" id="question34" style="display: none;">
+    <!-- <div class="question" id="question34" style="display: none;">
         <p>Please provide your email address so we can send you personalised recommendation?</p>
         <div class="input-group">
             <input onchange="setEmail()" type="email" id="email" placeholder="Enter Email">
           </div>
-    </div>
+    </div> -->
   </div>
   <!-- Thank-you screen -->
 <div id="thankYouScreen" style="display: none;">
   <h2>Thank you for completing the questionnaire!</h2>
+  <p id="bmiText"> </p>
   <button id="showRecommendationsButton">Show Recommendations</button>
 </div>
 
