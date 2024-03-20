@@ -837,3 +837,44 @@ buttons.forEach(button => {
 function toggleSelected(button) {
     button.classList.toggle('selected');
 }
+
+// Get the input fields for each question
+const inputFields = document.querySelectorAll('.question input[type="text"]');
+
+// Store the input field values for each question
+let inputValues = {};
+
+// Function to set the value of the input field
+function setInputValue(questionId, value) {
+    inputValues[questionId] = value;
+}
+
+// Add event listeners for input fields
+inputFields.forEach(inputField => {
+    const questionId = inputField.closest('.question').id;
+    inputField.addEventListener('input', function() {
+        // Update the inputValues object whenever the input field changes
+        setInputValue(questionId, this.value);
+    });
+});
+
+// Add event listener to move to the next question
+document.getElementById('nextBtn').addEventListener('click', function() {
+    // Store the value of the input fields before moving to the next question
+    inputFields.forEach(inputField => {
+        const questionId = inputField.closest('.question').id;
+        setInputValue(questionId, inputField.value);
+    });
+    // Code to move to the next question goes here...
+});
+
+// Restore input field values when revisiting questions
+document.addEventListener('DOMContentLoaded', function() {
+    // Loop through stored input values and set them for corresponding input fields
+    Object.keys(inputValues).forEach(questionId => {
+        const inputField = document.querySelector(`#${questionId} input[type="text"]`);
+        if (inputField) {
+            inputField.value = inputValues[questionId];
+        }
+    });
+});
