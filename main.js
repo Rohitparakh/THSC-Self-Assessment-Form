@@ -91,7 +91,7 @@ function setFitnessGoals(input) {
 function setHeight() {
   height = document.getElementById('height').value;
   console.log('Entered height:', height);
-  nextQuestion();
+  // nextQuestion();
 }
 
 function setWeight() {
@@ -106,7 +106,7 @@ function calculateBMI() {
     bmi = (weight / (heightInMeters * heightInMeters)).toFixed(1);
     console.log('Calculated BMI:', bmi);
   }
-  nextQuestion();
+  // nextQuestion();
 }
 
 function setExercise(selectedExercise) {
@@ -747,7 +747,7 @@ function showRecommendations() {
 }
 
 // Function to toggle the "selected" class to the parent label
-function toggleSelected() {
+function toggleSelectedCheckBox() {
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach(function(checkbox) {
 checkbox.addEventListener('change', function() {
@@ -762,7 +762,7 @@ checkbox.addEventListener('change', function() {
 }
 
 // Call the function to toggle selected class
-toggleSelected();
+toggleSelectedCheckBox();
 
 function appendToGoogleSheet(){
   // Collect form data
@@ -822,3 +822,18 @@ fetch('https://script.google.com/macros/s/AKfycbxswizVrOYShTWocw76dFXW3pnnlzmSG0
 
 }
 
+// Get all the buttons inside .option divs
+const buttons = document.querySelectorAll('.option button');
+
+// Loop through each button and add event listener
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Toggle the "selected" class for the clicked button
+        toggleSelected(this);
+    });
+});
+
+// Function to toggle the "selected" class when a button is clicked
+function toggleSelected(button) {
+    button.classList.toggle('selected');
+}
