@@ -312,3 +312,71 @@ input[type="checkbox"] {
     font-size: 14px;
   }
   
+.quiz .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Intro screen styles */
+  #introScreen {
+    text-align: center;
+  }
+  
+  #introScreen h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  #introScreen p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  #introScreen button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #2d3d23;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Form styles */
+  form {
+    margin-top: 20px;
+  }
+  
+  form h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"] {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #2d3d23;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Hide steps initially */
+  #nameStep,
+  #emailPhoneStep {
+    display: none;
+  }
+  

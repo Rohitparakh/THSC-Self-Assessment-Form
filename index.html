@@ -7,611 +7,326 @@
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<div class="quiz">
-   <!-- Name, Phone Number, and Email Section -->
-   <div id="userInfoSection" class="container">
-    <h1>Welcome to Our Product Recommendation Platform</h1>
-    <p>We're here to help you find the best products tailored to your needs!</p>
-    <label for="name">Name:</label>
-    <input type="text" id="name" placeholder="Enter your name"><br><br>
-    <label for="phone">Phone Number:</label>
-    <input type="text" id="phone" placeholder="Enter your phone number"><br><br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" placeholder="Enter your email address"><br><br>
-    <button id="userInfoSubmit" class="btn">Submit</button>
-  </div>
+  <div class="quiz">
+    <!-- Name, Phone Number, and Email Section -->
+    <div id="introScreen">
+      <h1>Welcome to Our Weight Loss Program</h1>
+      <p>Congratulations on taking the first step to stay youthful, for longer.</p>
+      <p>We are your weight loss specialists and are together in this journey with you.</p>
+      <p>Before we build your free diet plan, we would like to know more about you.</p>
+      <button id="moveAheadBtn">Let’s Move Ahead</button>
+    </div>    
+  
+    <div id="otherQuestionsSection" class="container questionDiv" style="display: none">
+      <div id="questionContainer">
+        
+        <div class="question" id="question1" style="display:block">
+          <p>What is your Name?
+          </p>
+          <div class="input-group">
+            <input onchange="setName(this.value)" type="text" id="name" placeholder="Enter your name">
+          </div>
+        </div>
 
-  <div id="otherQuestionsSection" class="container questionDiv" style="display: none;">
-  <div id="questionContainer">
-    <div class="question" id="question1" style="display: none;">
-      <p> Your Age</p>
-      <div class="options">
-        <div class="option">
-          <button onclick="setAge('30-35')">30-35</button>
+        <div class="question" id="question2" >
+          <p>Share Your Contact Details    </p>
+          <p>Can you please share your email ID and telephone number?</p>
+          <p><em>We will mail you your nutritionist recommended diet plan on this phone number & email. We promise not to spam you or share this number with anyone else.</em></p>
+          <input onchange="setEmail(this.value)" type="email" id="email" placeholder="Enter your email">
+          <input onchange="setPhone(this.value)" type="tel" id="phone" placeholder="Enter your phone number">    
         </div>
-        <div class="option">
-          <button onclick="setAge('36-40')">36-40</button>
-        </div>
-        <div class="option">
-          <button onclick="setAge('41-45')">41-45</button>
-        </div>
-        <div class="option">
-          <button onclick="setAge('46-50')">46-50</button>
-        </div>
-      </div>
-    </div>
-    <div class="question" id="question2">
-      <p> The gender you identify with</p>
-      <div class="options">
-        <div class="option">
-          <button onclick="setGender('male')">Male</button>
-        </div>
-        <div class="option">
-          <button onclick="setGender('female')">Female</button>
-        </div>
-        <div class="option">
-          <button onclick="setGender('other')">Other</button>
-        </div>
-      </div>
-    </div>
-    <div class="question" id="question3" >
-        <p>What are your top health or fitness goals? Pick from the list.</p>
-        <div class="options">
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFitnessGoals(this)" value="Weight loss">Weight loss</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFitnessGoals(this)" value="Muscle gain">Muscle gain</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFitnessGoals(this)" value="Improved energy levels">Improved energy levels</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFitnessGoals(this)" value="Improve Health">Improve Health</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFitnessGoals(this)" value="Maintain Health">Maintain Health</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFitnessGoals(this)" value="Improve Immunity">Improve Immunity</label>
+        <div class="question" id="question3" >
+          <p>What is your age?           </p>
+          <p>(Enter your age in years)           </p>
+          <div class="input-group">
+            <input onchange="setAge(this.value)" type="number" id="age" placeholder="Enter your age in years">
           </div>
         </div>
-      </div>
-    <div class="question" id="question4">
-      <p> Height (in cm)</p>
-      <div class="input-group">
-        <input onchange="setHeight()" type="number" id="height" placeholder="Enter Height">
-      </div>
-    </div>
-    <div class="question" id="question5">
-      <p> Weight (in kg)</p>
-      <div class="input-group">
-        <input onchange="setWeight()" type="number" id="weight" placeholder="Enter Weight">
-      </div>
-    </div>
-    <div class="question" id="question6">
-      <p> Do you exercise/walk during the week?</p>
-      <div class="options">
-        <div class="option">
-          <button onclick="setExercise('Yes')">Yes</button>
-        </div>
-        <div class="option">
-          <button onclick="setExercise('No')">No</button>
-        </div>
-        <div class="option">
-          <button onclick="setExercise('Maybe')">Maybe</button>
-        </div>
-      </div>
-    </div>
-    <div class="question" id="question7" style="display: none;">
-      <p> Frequency of your physical activity</p>
-      <div class="options">
-        <div class="option">
-          <button onclick="setActivityFrequency('Daily')">Daily</button>
-        </div>
-        <div class="option">
-          <button onclick="setActivityFrequency('5 days a week')">5 days a week</button>
-        </div>
-        <div class="option">
-          <button onclick="setActivityFrequency('3 days a week')">3 days a week</button>
-        </div>
-        <div class="option">
-          <button onclick="setActivityFrequency('Once a week')">Once a week</button>
-        </div>
-      </div>
-    </div>
-    <div class="question" id="question8" style="display: none;">
-      <p> Duration of your physical activity</p>
-      <div class="options">
-        <div class="option">
-          <button onclick="setActivityDuration('15 minutes')">15 minutes</button>
-        </div>
-        <div class="option">
-          <button onclick="setActivityDuration('30 minutes')">30 minutes</button>
-        </div>
-        <div class="option">
-          <button onclick="setActivityDuration('45 minutes')">45 minutes</button>
-        </div>
-        <div class="option">
-          <button onclick="setActivityDuration('One hour')">One hour</button>
-        </div>
-        <div class="option">
-          <button onclick="setActivityDuration('More than an hour')">More than an hour</button>
-        </div>
-      </div>
-    </div>
-    <div class="question" id="question9" style="display: none;">
-      <p> Intensity of your physical activity</p>
-      <div class="options">
-        <div class="option">
-          <button onclick="setActivityIntensity('Light')">Light</button>
-        </div>
-        <div class="option">
-          <button onclick="setActivityIntensity('Moderate')">Moderate</button>
-        </div>
-        <div class="option">
-          <button onclick="setActivityIntensity('Intense')">Intense</button>
-        </div>
-      </div>
-    </div>
-    <div class="question" id="question10" style="display: none;">
-      <p> Do you have any existing medical conditions?</p>
-      <div class="options">
-        <div class="option">
-          <button onclick="setMedicalCondition('Yes')">Yes</button>
-        </div>
-        <div class="option">
-          <button onclick="setMedicalCondition('No')">No</button>
-        </div>
-        <div class="option">
-          <button onclick="setMedicalCondition('I don\'t know')">I don't know</button>
-        </div>
-      </div>
-    </div>
-    <div class="question" id="question11" style="display: none;">
-      <p>Do you have any of the following diagnosed conditions? Check all that apply.</p>
-      <div class="options">
-        <div class="option">
-          <label class="checkbox-button"><input onchange="setDiagnosedConditions()" type="checkbox" id="diabetes"> Diabetes</label>
-        </div>
-        <div class="option">
-          <label class="checkbox-button"><input onchange="setDiagnosedConditions()" type="checkbox" id="hypothyroidism"> Hypothyroidism</label>
-        </div>
-        <div class="option" id="pcosHolder">
-          <label class="checkbox-button"><input onchange="setDiagnosedConditions()" type="checkbox" id="pcos"> PCOS </label>
-        </div>
-        <div class="option">
-          <label class="checkbox-button"><input onchange="setDiagnosedConditions()" type="checkbox" id="highBloodPressure"> High Blood Pressure</label>
-        </div>
-        <div class="option">
-          <label class="checkbox-button"><input onchange="setDiagnosedConditions()" type="checkbox" id="highCholesterol"> High Cholesterol levels</label>
-        </div>
-        <div class="option">
-          <label class="checkbox-button"><input onchange="setDiagnosedConditions()" type="checkbox" id="heartDisease"> Heart disease</label>
-        </div>
-        <div class="option">
-          <label class="checkbox-button"><input onchange="setDiagnosedConditions()" type="checkbox" id="other"> Any other (open-ended)</label>
-        </div>
-      </div>
-    </div>
-    <div class="question" id="question12" style="display: none;">
-      <p>Are you taking medications for the above-checked condition/s?</p>
-      <div class="options">
-        <div class="option">
-          <button onclick="setMedication('Yes')">Yes</button>
-        </div>
-        <div class="option">
-          <button onclick="setMedication('No')">No</button>
-        </div>
-      </div>
-    </div>
-    <div class="question" id="question13" style="display: none;">
-        <p>Have you noticed fat deposition around your waist area in the past six months?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setWaistFat('Yes')">Yes</button>
-          </div>
-          <div class="option">
-            <button onclick="setWaistFat('No')">No</button>
-          </div>
-          <div class="option">
-            <button onclick="setWaistFat('It is not recent')">It is not recent</button>
+        <div class="question" id="question4">
+          <p>The gender you identify with</p>
+          <div class="options">
+            <div class="option">
+              <button onclick="setGender('male')">Male</button>
+            </div>
+            <div class="option">
+              <button onclick="setGender('female')">Female</button>
+            </div>
+            <div class="option">
+              <button onclick="setGender('other')">Other</button>
+            </div>
           </div>
         </div>
-    </div>
-    <div class="question" id="question14" style="display: none;">
-        <p>Is it tough to fall asleep?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setSleepDifficulty('Mostly No')">Mostly No</button>
-          </div>
-          <div class="option">
-            <button onclick="setSleepDifficulty('Mostly Yes')">Mostly Yes</button>
-          </div>
-          <div class="option">
-            <button onclick="setSleepDifficulty('It\'s a tie')">It's a tie</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question15" style="display: none;">
-        <p> Do you find yourself snapping at little things?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setSnapping('Mostly No')">Mostly No</button>
-          </div>
-          <div class="option">
-            <button onclick="setSnapping('Mostly Yes')">Mostly Yes</button>
-          </div>
-          <div class="option">
-            <button onclick="setSnapping('It\'s a tie')">It's a tie</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question16" style="display: none;">
-        <p> Do you suffer from morning headaches?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setMorningHeadaches('Mostly No')">Mostly No</button>
-          </div>
-          <div class="option">
-            <button onclick="setMorningHeadaches('Mostly Yes')">Mostly Yes</button>
-          </div>
-          <div class="option">
-            <button onclick="setMorningHeadaches('It\'s a tie')">It's a tie</button>
+        <div class="question" id="question5">
+          <p>What are your top health or fitness goals? Pick from the list.</p>
+          <div class="options">
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFitnessGoals(this)" value="Weight loss">Weight loss</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFitnessGoals(this)" value="Muscle gain">Muscle gain</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFitnessGoals(this)" value="Improved energy levels">Improved energy
+                levels</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFitnessGoals(this)" value="Improve Health">Improve Health</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFitnessGoals(this)" value="Maintain Health">Maintain Health</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFitnessGoals(this)" value="Improve Immunity">Improve Immunity</label
+              >
+            </div>
           </div>
         </div>
-    </div>
-    <div class="question" id="question17" style="display: none;">
-        <p> Are you tired all the time?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setTiredness('Mostly No')">Mostly No</button>
-          </div>
-          <div class="option">
-            <button onclick="setTiredness('Mostly Yes')">Mostly Yes</button>
-          </div>
-          <div class="option">
-            <button onclick="setTiredness('It\'s a tie')">It's a tie</button>
+        <div class="question" id="question6">
+          <p>Height (in cm)</p>
+          <div class="input-group">
+            <input onchange="setHeight()" type="number" id="height" placeholder="Enter Height">
           </div>
         </div>
-    </div>
-    <div class="question" id="question18" style="display: none;">
-        <p> Do you suffer from mood swings?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setMoodSwings('Mostly No')">Mostly No</button>
-          </div>
-          <div class="option">
-            <button onclick="setMoodSwings('Mostly Yes')">Mostly Yes</button>
-          </div>
-          <div class="option">
-            <button onclick="setMoodSwings('It\'s a tie')">It's a tie</button>
+        <div class="question" id="question7">
+          <p>Weight (in kg)</p>
+          <div class="input-group">
+            <input onchange="setWeight()" type="number" id="weight" placeholder="Enter Weight">
           </div>
         </div>
-    </div>
-    <div class="question" id="question19" style="display: none;">
-    <p>Have you experienced menopause?</p>
-    <div class="options">
-      <div class="option">
-        <button onclick="setMenopause('Yes')">Yes</button>
-      </div>
-      <div class="option">
-        <button onclick="setMenopause('No')">No</button>
-      </div>
-      <div class="option">
-        <button onclick="setMenopause('Currently experiencing it')">Currently experiencing it</button>
-      </div>
-      <div class="option">
-        <button onclick="setMenopause('Prefer not to answer')">Prefer not to answer</button>
-      </div>
-    </div>
-    </div>
-    <div class="question" id="question20" style="display: none;">
-        <p>Describe your eating habits:</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setEatingHabits('Vegan')">Vegan</button>
+        <div class="question" id="question8">
+          <p>Do you exercise/walk during the week regularly?</p>
+          <p>(Regular physical exercise means at least 30 min of continuous walk or exercise.)</p>
+          <div class="options">
+            <div class="option">
+              <button onclick="setExercise('Yes')">Yes</button>
+            </div>
+            <div class="option">
+              <button onclick="setExercise('No')">No</button>
+            </div>
           </div>
-          <div class="option">
-            <button onclick="setEatingHabits('Vegetarian')">Vegetarian</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingHabits('Vegetarian with Eggs / Lacto-Ovo Vegetarian')">Vegetarian with Eggs / Lacto-Ovo Vegetarian</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingHabits('Non-Vegetarian')">Non-Vegetarian</button>
+          <p>Regular physical activity beyond 35 helps maintain muscle mass, bone density, and metabolic health, reducing the risk of age-related conditions like osteoporosis, heart disease, and diabetes, while enhancing overall mobility and mental well-being.
+          </p>
+        </div>
+        <div class="question" id="question9">
+          <p>How frequently do you walk or exercise?</p>
+          <div class="options">
+            <div class="option">
+              <button onclick="setActivityFrequency('Daily')">Daily</button>
+            </div>
+            <div class="option">
+              <button onclick="setActivityFrequency('5 days a week')">5 days a week</button>
+            </div>
+            <div class="option">
+              <button onclick="setActivityFrequency('3 days a week')">3 days a week</button>
+            </div>
+            <div class="option">
+              <button onclick="setActivityFrequency('Once a week')">Once a week</button>
+            </div>
           </div>
         </div>
-    </div>
-    <div class="question" id="question21" style="display: none;">
-        <p>Your typical eating pattern:</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setEatingPattern('1-2 meals per day')">1-2 meals per day</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingPattern('2-3 meals per day')">2-3 meals per day</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingPattern('3 meals per day')">3 meals per day</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingPattern('3 meals with 2 snacks')">3 meals with 2 snacks</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingPattern('No fixed pattern')">No fixed pattern</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question22" style="display: none;">
-        <p>Are you allergic/intolerant to any of the following food/s? Check all that apply.</p>
-        <div class="options">
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFoodAllergies(this)" value="Milk and Milk Products / Dairy"> Milk and Milk Products / Dairy</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFoodAllergies(this)" value="Nuts"> Nuts</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFoodAllergies(this)" value="Gluten / Wheat"> Gluten / Wheat</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFoodAllergies(this)" value="Soybean"> Soybean</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFoodAllergies(this)" value="Eggs"> Eggs</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFoodAllergies(this)" value="Fish"> Fish</label>
-          </div>
-          <div class="option">
-            <label class="checkbox-button"><input type="checkbox" onchange="setFoodAllergies(this)" value="Any other"> Any other</label>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question23" style="display: none;">
-        <p>What is your daily average water intake? Please exclude other beverages.</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setWaterIntake('3-4 glasses')">3-4 glasses</button>
-          </div>
-          <div class="option">
-            <button onclick="setWaterIntake('5-6 glasses')">5-6 glasses</button>
-          </div>
-          <div class="option">
-            <button onclick="setWaterIntake('7-8 glasses')">7-8 glasses</button>
-          </div>
-          <div class="option">
-            <button onclick="setWaterIntake('8-10 glasses')">8-10 glasses</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question24" style="display: none;">
-        <p>How much caffeine (tea, coffee, cola, energy drinks) do you typically consume daily?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setCaffeineIntake('None')">None</button>
-          </div>
-          <div class="option">
-            <button onclick="setCaffeineIntake('1 cup')">1 cup</button>
-          </div>
-          <div class="option">
-            <button onclick="setCaffeineIntake('2 cups')">2 cups</button>
-          </div>
-          <div class="option">
-            <button onclick="setCaffeineIntake('3 cups')">3 cups</button>
-          </div>
-          <div class="option">
-            <button onclick="setCaffeineIntake('More than 3 cups')">More than 3 cups</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question25" style="display: none;">
-        <p>How many servings of whole grains (whole wheat, brown rice, steel-cut oats, millets) do you include daily?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setWholeGrainServings('2-3 servings')">2-3 servings</button>
-          </div>
-          <div class="option">
-            <button onclick="setWholeGrainServings('3-4 servings')">3-4 servings</button>
-          </div>
-          <div class="option">
-            <button onclick="setWholeGrainServings('4-5 servings')">4-5 servings</button>
-          </div>
-          <div class="option">
-            <button onclick="setWholeGrainServings('5-7 servings')">5-7 servings</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question26" style="display: none;">
-        <p>How many servings of fruit do you have in your daily diet?</p>
-        <p style="font-size: 14px; color: #666; margin-top: 5px;">1 serving equals a medium apple/ 2 plums/ a bowl of papaya or fruit salad</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setFruitServings('None')">None</button>
-          </div>
-          <div class="option">
-            <button onclick="setFruitServings('1 serving')">1 serving</button>
-          </div>
-          <div class="option">
-            <button onclick="setFruitServings('2 servings')">2 servings</button>
-          </div>
-          <div class="option">
-            <button onclick="setFruitServings('3 or more servings')">3 or more servings</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question27" style="display: none;">
-        <p>How many servings of vegetables do you consume daily?</p>
-        <p style="font-size: 14px; color: #666; margin-top: 5px;">1 serving is about 75 g which equals ½ cup cooked vegetable/ ½ medium potato or other starchy vegetables/1 medium tomato/1 cup of raw salad</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setVegetableServings('1-2 servings')">1-2 servings</button>
-          </div>
-          <div class="option">
-            <button onclick="setVegetableServings('2-3 servings')">2-3 servings</button>
-          </div>
-          <div class="option">
-            <button onclick="setVegetableServings('3-5 servings')">3-5 servings</button>
-          </div>
-          <div class="option">
-            <button onclick="setVegetableServings('5 or more servings')">5 or more servings</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question28" style="display: none;">
-        <p>How many servings of protein-rich foods (Milk, curd, cottage cheese, eggs, fish, chicken, soymilk, soy nuggets, tofu, beans and lentils) do you include daily?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setProteinServings('1 serving')">1 serving</button>
-          </div>
-          <div class="option">
-            <button onclick="setProteinServings('1-2 servings')">1-2 servings</button>
-          </div>
-          <div class="option">
-            <button onclick="setProteinServings('2-3 servings')">2-3 servings</button>
-          </div>
-          <div class="option">
-            <button onclick="setProteinServings('More than 3 servings')">More than 3 servings</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question29" style="display: none;">
-        <p>How often do you eat out or order a takeaway?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setEatingOutFrequency('Daily')">Daily</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingOutFrequency('2-3 times a week')">2-3 times a week</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingOutFrequency('Weekly')">Weekly</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingOutFrequency('Fortnightly')">Fortnightly</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingOutFrequency('Monthly')">Monthly</button>
-          </div>
-          <div class="option">
-            <button onclick="setEatingOutFrequency('Rarely')">Rarely</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question30" style="display: none;">
-        <p>How much sugar do you add to your beverages or foods daily?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setSugarIntake('I do not add sugar')">I do not add sugar</button>
-          </div>
-          <div class="option">
-            <button onclick="setSugarIntake('2 teaspoons')">2 teaspoons</button>
-          </div>
-          <div class="option">
-            <button onclick="setSugarIntake('2-4 teaspoons')">2-4 teaspoons</button>
-          </div>
-          <div class="option">
-            <button onclick="setSugarIntake('4-6 teaspoons')">4-6 teaspoons</button>
-          </div>
-          <div class="option">
-            <button onclick="setSugarIntake('6-8 teaspoons')">6-8 teaspoons</button>
-          </div>
-          <div class="option">
-            <button onclick="setSugarIntake('More than 8 teaspoons')">More than 8 teaspoons</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question31" style="display: none;">
-        <p>How often do you include packed foods/ready-to-eat foods like sauces, ketchup, chips, namkeen, biscuits, instant noodles, instant soups, etc.?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setPackedFoodsFrequency('In every meal')">In every meal</button>
-          </div>
-          <div class="option">
-            <button onclick="setPackedFoodsFrequency('Daily')">Daily</button>
-          </div>
-          <div class="option">
-            <button onclick="setPackedFoodsFrequency('Twice/thrice a week')">Twice/thrice a week</button>
-          </div>
-          <div class="option">
-            <button onclick="setPackedFoodsFrequency('Once a week')">Once a week</button>
-          </div>
-          <div class="option">
-            <button onclick="setPackedFoodsFrequency('Fortnightly')">Fortnightly</button>
-          </div>
-          <div class="option">
-            <button onclick="setPackedFoodsFrequency('Rarely')">Rarely</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question32" style="display: none;">
-        <p>How often do you consume alcohol?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setAlcoholFrequency('Daily')">Daily</button>
-          </div>
-          <div class="option">
-            <button onclick="setAlcoholFrequency('Several times a week')">Several times a week</button>
-          </div>
-          <div class="option">
-            <button onclick="setAlcoholFrequency('Weekly')">Weekly</button>
-          </div>
-          <div class="option">
-            <button onclick="setAlcoholFrequency('Occasionally')">Occasionally</button>
-          </div>
-          <div class="option">
-            <button onclick="setAlcoholFrequency('Never')">Never</button>
-          </div>
-        </div>
-    </div>
-    <div class="question" id="question33" style="display: none;">
-        <p>How many hours do you sleep per night?</p>
-        <div class="options">
-          <div class="option">
-            <button onclick="setSleepDuration('Less than 5 hours')">Less than 5 hours</button>
-          </div>
-          <div class="option">
-            <button onclick="setSleepDuration('5-6 hours')">5-6 hours</button>
-          </div>
-          <div class="option">
-            <button onclick="setSleepDuration('6-7 hours')">6-7 hours</button>
-          </div>
-          <div class="option">
-            <button onclick="setSleepDuration('7-8 hours')">7-8 hours</button>
-          </div>
-          <div class="option">
-            <button onclick="setSleepDuration('8-9 hours')">8-9 hours</button>
-          </div>
-        </div>
-    </div>
-    <!-- <div class="question" id="question34" style="display: none;">
-        <p>Please provide your email address so we can send you personalised recommendation?</p>
-        <div class="input-group">
-            <input onchange="setEmail()" type="email" id="email" placeholder="Enter Email">
-          </div>
-    </div> -->
-  </div>
-  <!-- Thank-you screen -->
-<div id="thankYouScreen" style="display: none;">
-  <h2>Thank you for completing the questionnaire!</h2>
-  <p id="bmiText"> </p>
-  <button id="showRecommendationsButton">Show Recommendations</button>
-</div>
+        <div class="question" id="question10">
+          <p>What is the intensity of your physical activity?</p>
+          <div class="options">
+            <div class="option">
+              <button onclick="setActivityIntensity('Light')">Light</button>
+            </div>
+            <div class="option">
+              <button onclick="setActivityIntensity('Moderate')">Moderate</button>
+            </div>
+            <div class="option">
+              <button onclick="setActivityIntensity('Intense')">Intense</button>
+            </div>
+          </div>
+          <p>
+            <b>Light-intensity exercises</b> like casual walking, bicycling (at a speed of less than 8 km/hour), Stretching, lightweight training, dancing slowly, and housework. 
+</p><p>
+<b>Moderate-intensity exercises</b> like brisk walking (at a speed of 5-7 km/hour), Hiking, bicycling (at a speed between 8-14 km/hour), low-impact aerobics, moderate dancing, playing competitive sports like tennis/volleyball, yoga, weight training, housework that requires scrubbing.
+</p><p>
+<b>High-intensity exercises</b> like jogging, running, mountain climbing, bicycling (at a speed of 16 km/hour), high-impact aerobics, vigorous dancing, karate, judo, tae kwon do, competitive sports like basketball/soccer/football, swimming laps.
+ 
 
-<div id="recommendationContainer" style="display: none;">
-  <h2>Product Recommendations</h2>
-  <div class="product-grid" id="productGrid">    
-</div>    
-</div>
-
-  <div class="btn-group" style="display: none">
-    <button class="btn secondary-button" id="prevBtn" onclick="prevQuestion()" style="display: none;">Previous</button>
-    <button class="btn cta-button" id="nextBtn" onclick="nextQuestion()">Next</button>
+          </p>
+        </div>
+        <div class="question" id="question11">
+          <p>We would like to know a few more things about you before we can suggest a meal plan based on the suggested calories. 
+          </p>
+          <p>Do you have any existing medical conditions?</p>
+          <div class="options">
+            <div class="option">
+              <button onclick="setMedicalCondition('Yes')">Yes</button>
+            </div>
+            <div class="option">
+              <button onclick="setMedicalCondition('No')">No</button>
+            </div>
+          </div>
+        </div>
+        <div class="question" id="question12">
+          <p>Do you have any of the following diagnosed conditions? Check all that apply.</p>
+          <div class="options">
+            <div class="option">
+              <label class="checkbox-button"
+                ><input onchange="setDiagnosedConditions()" type="checkbox" id="diabetes"> Diabetes</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input onchange="setDiagnosedConditions()" type="checkbox" id="hypothyroidism"> Hypothyroidism</label
+              >
+            </div>
+            <div class="option" id="pcosHolder">
+              <label class="checkbox-button"
+                ><input onchange="setDiagnosedConditions()" type="checkbox" id="pcos"> PCOS
+              </label>
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input onchange="setDiagnosedConditions()" type="checkbox" id="highBloodPressure"> High Blood Pressure</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input onchange="setDiagnosedConditions()" type="checkbox" id="highCholesterol"> High Cholesterol levels</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input onchange="setDiagnosedConditions()" type="checkbox" id="heartDisease"> Heart disease</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input onchange="setDiagnosedConditions()" type="checkbox" id="other"> Any other (open-ended)</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="question" id="question13">
+          <p>Have you experienced menopause?</p>
+          <div class="options">
+            <div class="option">
+              <button onclick="setMenopause('Yes')">Yes</button>
+            </div>
+            <div class="option">
+              <button onclick="setMenopause('No')">No</button>
+            </div>
+            <div class="option">
+              <button onclick="setMenopause('Currently experiencing it')">Currently experiencing it</button>
+            </div>
+            <div class="option">
+              <button onclick="setMenopause('Prefer not to answer')">Prefer not to answer</button>
+            </div>
+          </div>
+        </div>
+        <div class="question" id="question14">
+          <p>Describe your eating habits:</p>
+          <div class="options">
+            <div class="option">
+              <button onclick="setEatingHabits('Vegan')">Vegan</button>
+            </div>
+            <div class="option">
+              <button onclick="setEatingHabits('Vegetarian')">Vegetarian</button>
+            </div>
+            <div class="option">
+              <button onclick="setEatingHabits('Vegetarian with Eggs / Lacto-Ovo Vegetarian')">
+                Vegetarian with Eggs / Lacto-Ovo Vegetarian
+              </button>
+            </div>
+            <div class="option">
+              <button onclick="setEatingHabits('Non-Vegetarian')">Non-Vegetarian</button>
+            </div>
+          </div>
+        </div>
+        <div class="question" id="question15">
+          <p>Are you allergic/intolerant to any of the following food/s? Check all that apply.</p>
+          <div class="options">
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFoodAllergies(this)" value="Milk and Milk Products / Dairy"> Milk and
+                Milk Products / Dairy</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFoodAllergies(this)" value="Nuts"> Nuts</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFoodAllergies(this)" value="Gluten / Wheat"> Gluten / Wheat</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFoodAllergies(this)" value="Soybean"> Soybean</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFoodAllergies(this)" value="Eggs"> Eggs</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFoodAllergies(this)" value="Fish"> Fish</label
+              >
+            </div>
+            <div class="option">
+              <label class="checkbox-button"
+                ><input type="checkbox" onchange="setFoodAllergies(this)" value="Any other"> Any other</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Thank-you screen -->
+      <div id="thankYouScreen" style="display: none;">
+        <h2>Thank you for completing the questionnaire!</h2>
+        <p id="bmiText"></p>
+        <button id="showRecommendationsButton">Show Recommendations</button>
+      </div>
+  
+      <div id="recommendationContainer" style="display: none">
+        <h2>Product Recommendations</h2>
+        <div class="product-grid" id="productGrid">
+          <div class="grmm">
+            {%- render 'product-card', product: section.settings.grmm, target_blank: true -%}
+          </div>
+          <div class="gnmr">
+            {%- render 'product-card', product: section.settings.gnmr, target_blank: true -%}
+          </div>
+          <div class="ednm">
+            {%- render 'product-card', product: section.settings.ednm, target_blank: true -%}
+          </div>
+          <div class="slmm">
+            {%- render 'product-card', product: section.settings.slmm, target_blank: true -%}
+          </div>
+        </div>
+      </div>
+  
+      <div class="btn-group" style="display: none">
+        <button class="btn secondary-button" id="prevBtn" onclick="prevQuestion()" style="display: none;">
+          Previous
+        </button>
+        <button class="btn cta-button" id="nextBtn" onclick="nextQuestion()">Next</button>
+      </div>
+    </div>
   </div>
-  </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"
+  ></script>
 <script src="./main.js"></script>
 </body>
 </html>
